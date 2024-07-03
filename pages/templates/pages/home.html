@@ -77,10 +77,13 @@
           <div class="card card-body h-100">
             <h4>What I know</h4>
             <hr />
-            <p>
-              Python/Django, MySQL/SQLite, GitHub/Git, HTML/CSS, OOP, Database
-              Design, Java, Data Structures
-            </p>
+            {% if skills %}
+              {% for skill in skills %}
+                <p>{{ skill.name }}</p>
+              {% endfor %}
+            {% else %}
+              <p>No skills available.</p>
+            {% endif %}
           </div>
         </div>
       </div>
