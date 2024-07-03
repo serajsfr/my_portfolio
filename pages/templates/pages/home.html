@@ -38,36 +38,13 @@
           <div class="card card-body h-100">
             <h4>My Django Projects</h4>
             <hr />
-            {% for project in projects %}
-              <h2><a href={{ project.link }}>{{ project.title }}</a></h2>
-              <p>{{ projcet.description }}</p>
-            {% endfor %}
-            <p>
-              After starting my first course about Django, I tried to create a
-              <a href="https://github.com/serajsfr/monthly_challenges"
-                >monthly_challenges</a
-              >
-              app in which there are months of year and each month is linked to
-              its challenge.
-            </p>
-            <p>
-              After a month of studying Django, I dived deeper into its concepts
-              and made
-              <a href="https://github.com/serajsfr/mysite">ads</a>
-              app in which there are ads that users can create and comment on
-              each. They can only edit/delete their own ads and comments. They
-              can star their facorite ad if they want to.
-            </p>
-            <p>
-              My recent project is
-              <a href="https://github.com/serajsfr/project_management"
-                >project_management</a
-              >
-              app in which there are tasks that users can see if they are
-              completed, in progress, or pending. Each user can edit/delete
-              their own tasks. I used Django Restful API in this project which
-              was really helpful to understand more about this framework.
-            </p>
+            {% if projects %}
+              {% for project in projects %}
+                <li><a href={{ project.link }}>{{ project.title }}</a>: {{ project.description }}</li>
+              {% endfor %}
+            {% else %}
+              <li>No projects available.</li>
+            {% endif %}
 
             <ul class="social-links">
               <li>

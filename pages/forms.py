@@ -17,6 +17,6 @@ class ProjectForm(forms.ModelForm):
         fields = ['title', 'description', 'technologies', 'link', 'demo']
 
     technologies = forms.ModelMultipleChoiceField(
-        queryset=Skill.objects.all(),
+        queryset=Skill.objects.all(),   
         widget=forms.CheckboxSelectMultiple
     )
