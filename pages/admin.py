@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Profile, Project, Skill, Contact
+from .forms import ProjectForm
 
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
@@ -8,6 +9,7 @@ class ProfileAdmin(admin.ModelAdmin):
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ('title', 'description')
+    form = ProjectForm
 
 @admin.register(Skill)
 class SkillAdmin(admin.ModelAdmin):

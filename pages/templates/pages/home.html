@@ -38,6 +38,10 @@
           <div class="card card-body h-100">
             <h4>My Django Projects</h4>
             <hr />
+            {% for project in projects %}
+              <h2><a href={{ project.link }}>{{ project.title }}</a></h2>
+              <p>{{ projcet.description }}</p>
+            {% endfor %}
             <p>
               After starting my first course about Django, I tried to create a
               <a href="https://github.com/serajsfr/monthly_challenges"

@@ -15,9 +15,15 @@ class Project(models.Model):
     technologies = models.ManyToManyField('Skill', related_name='projects')
     link = models.URLField(max_length=200, blank=True)
     demo = models.URLField(max_length=200, blank=True)
+    
+    def __str__(self):
+        return self.title
 
 class Skill(models.Model):
     name = models.CharField(max_length=50)
+    
+    def __str__(self):
+        return self.name
 
 class Contact(models.Model):
     name = models.CharField(max_length=100)
