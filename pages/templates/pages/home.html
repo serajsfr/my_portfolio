@@ -15,6 +15,15 @@
           <hr />
           <h4>Hi, I'm Seraj!</h4>
           <p>I love coding, doing research and collaborationg</p>
+          {% if not user.is_authenticated %}
+            <div class="login-popup">
+              <form method="post" action="{% url 'login' %}">
+                  {% csrf_token %}
+                  {{ form.as_p }}
+                  <button type="submit" class="btn btn-primary">Login</button>
+              </form>
+            </div>
+          {% endif %}
         </div>
       </div>
 
@@ -25,9 +34,11 @@
           {% if projects %}
             {% for project in projects %}
               <li><a href={{ project.link }}>{{ project.title }}</a>: {{ project.description }}</li>
-              <a href="{% url 'edit_projects' project.id %}">
-                <i class="fas fa-edit"></i>
-              </a>
+              {% if user.is_authenticated %}
+                <a href="{% url 'edit_projects' project.id %}">
+                  <i class="fas fa-edit"></i>
+                </a>
+              {% endif %}
             {% endfor %}
           {% else %}
             <li>No projects available.</li>
